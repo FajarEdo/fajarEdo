@@ -49,4 +49,37 @@ function bmiKalkulator(){
         explanation.textContent = "Anda Termasuk dalam kategori berat badan berlebih (Obesitas). disini cara terbaik yang seharusnya dilakukan adalah mengubah pola hidup anda menjadi lebih sehat, mengurangi makanan berlemak, memperbanyak mengkonsumsi sayuran dan buah buahan dan berkonsultasi dengan dokter"
     
     }
+
+}
+
+function buatFileHasilMBI() {
+    // Ambil data hasil MBI dari elemen dengan ID
+    const hasilMBI = document.getElementById("result").innerText;
+    const status = document.getElementById("statusBmi").innerText;
+    const rataRata = document.getElementById("avg-res").innerText;
+    const penjelasan = document.getElementById("explanation").innerText;
+
+    // Gabungkan data menjadi satu teks dengan karakter pemisah baris ("\n")
+    const combinedData = hasilMBI + "\n" + status + "\n" + rataRata + "\n" + penjelasan;
+
+    // Buat objek blob dari data hasil MBI
+    const blob = new Blob([combinedData], { type: "text/plain" });
+
+    // Buat URL objek untuk blob
+    const url = URL.createObjectURL(blob);
+
+    // Dapatkan elemen anchor dengan ID "unduh"
+    const downloadLink = document.getElementById("unduh");
+
+    // Set href pada elemen anchor dengan URL objek hasil MBI
+    downloadLink.setAttribute("href", url);
+
+    // Set nama file yang akan diunduh
+    downloadLink.setAttribute("download", "hasil_MBI.txt");
+
+    // Klik link download secara otomatis
+    downloadLink.click();
+
+    // Hapus URL objek (opsional, jika sudah tidak diperlukan)
+    URL.revokeObjectURL(url);
 }
