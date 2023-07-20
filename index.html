@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator MBI</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="isi">
@@ -21,11 +18,11 @@
                 <form action="" id="form1">
                         <div class="jenisKelamin">
                             <div class="btn">
-                                <input type="radio" name="jenisKelamin" id="Pria">
+                                <input type="radio" name="jenisKelamin" id="Pria" required>
                                 <label for="Pria">Pria</label>
                             </div>
                             <div class="btn">
-                                <input type="radio" name="jenisKelamin" id="Wanita">
+                                <input type="radio" name="jenisKelamin" id="Wanita" required>
                                 <label for="Wanita">Wanita</label>
                             </div>
                         </div>
@@ -33,11 +30,11 @@
                     <div class="container">
                         <div class="input">
                                 <label for="berat badan">Berat Badan (Kg)</label>
-                                <input class="MBI-awnser" type="number" name="berat badan" id="berat" placeholder="masukan berat badan">
+                                <input class="MBI-awnser" type="number" name="berat badan" id="berat" placeholder="masukan berat badan" required>
                                 <label for="usia">Usia (Tahun)</label>
-                                <input class="MBI-awnser" type="number" name="usia" id="usia" placeholder="masukan usia">
+                                <input class="MBI-awnser" type="number" name="usia" id="usia" placeholder="masukan usia" required>
                                 <label for="tinggi badan">Tinggi Badan (Cm)</label>
-                                <input class="MBI-awnser" type="number" name="tinggi badan" id="tinggi" placeholder="masukan tinggi badan">
+                                <input class="MBI-awnser" type="number" name="tinggi badan" id="tinggi" placeholder="masukan tinggi badan" required>
                         </div>
                         <div class="sumbit">
                             <button type="submit" class="kirim">Hitung MBI</button>
@@ -47,14 +44,18 @@
                 </form>
                 
         </div>
-        <div>
+        <div class="hasil">
             <h2>
                 Hasil
             </h2>
             <p id="result"></p>
             <p id="statusBmi"></p>
-            <h2 id="avg-res"></h2>
+            <h3 id="avg-res"></h3>
             <p id="explanation"></p>
+            <div class="unduhFile">
+                <a href="#" id="unduh">Unduh File Hasil MBI</a>
+                <button id="buat">Unduh</button>
+            </div>
         </div>
         <div class="teks">
             <div>
@@ -115,6 +116,10 @@
             e.preventDefault();
             bmiKalkulator(this);
         });
-    </script>
+    // Tambahkan event listener pada tombol "Buat File Hasil MBI"
+        document.getElementById("buat").addEventListener("click", function() {
+            buatFileHasilMBI();
+        });
+        </script>
 </body>
 </html>
